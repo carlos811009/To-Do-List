@@ -1,0 +1,76 @@
+.container {
+
+}
+
+.checked {
+  color: #ccc;
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+.mb-3 {
+	background-color: rgb(65, 129, 129, 0.9);
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	box-shadow: 0 4px 5px 0 rgba(51, 102, 102, 0.5);
+}
+
+.nav1 {
+	width: 70%;
+	color: white;
+}
+
+h3 {
+	text-align: center;
+}
+
+.content {
+	font-size: 10px;
+	color: gray;
+	width: 200px;
+}
+
+#newTodo {
+	margin-right: 20px;
+}
+
+.list-info {
+	width: 70%;
+	text-align: center;
+	margin:20px auto;
+}
+
+[class*=container] {
+/* 	outline: 1px solid; */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+	margin: 0 auto 20px;
+}
+
+[class*=title] {
+	padding-left: 0px;
+	text-align: left;
+}
+
+.fa-trash-alt {
+	text-align: right;
+}
+
+.left {
+	margin-right: 40px;
+}
+
+.listItem {
+	display: flex;
+	justify-content: space-around;
+}
+
+.item {
+	text-align: left;
+	padding: 0;
+}
