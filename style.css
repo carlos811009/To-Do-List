@@ -1,7 +1,6 @@
-.container {
-
+#body {
+	justify-content: center;
 }
-
 .checked {
   color: #ccc;
   text-decoration: line-through;
