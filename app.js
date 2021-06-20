@@ -1,7 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const app = express()
-
+const db = require('./models/index')
 const PORT = 3000
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs' }))
