@@ -7,6 +7,16 @@
 
     <div id="my-todo">
       <!-- 			add items here -->
+      {{#each lists}}
+      <div class="infor_container">
+        <label for="todo list-group-item" class="item col-7">
+          <input class="form-check-input me-1" type="checkbox" value="">
+          {{this.name}}
+        </label>
+        <div class="createdTime mr-2">{{this.time}}</div>
+        <i class="fas fa-minus-circle circle-delete"></i>
+      </div>
+      {{/each }}
     </div>
 
   </section>

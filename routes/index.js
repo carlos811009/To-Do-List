@@ -1,9 +1,8 @@
-
-
+const toDoController = require('../controllers/toDoController')
+const userController = require('../controllers/userController')
 module.exports = (app) => {
-  app.get('/', (req, res) => {
-    res.render('index')
-  })
+  app.get('/', toDoController.getToDO)
+
   app.get('/login', (req, res) => {
     res.render('login')
   })
