@@ -15,9 +15,12 @@
   <div class="row" id="body">
     <nar class="mb-3 col-12">
       <div class="nav1 row">
-        <div class="col-3 myTodoTitle">My Todo</div>
-        <input type="text" placeholder="to do something..." id="newTodo" class="form-control col-6">
-        <button id="addBtn" class="btn btn-info col-2">Add</button>
+        <div class="col-2 myTodoTitle ">My Todo</div>
+        <form action="/todos/add" method="post" class="col-6 row">
+          <input type="text" placeholder="to do something..." name="newList" id="newList"
+            class="form-control col-9 mr-5">
+          <button id="submit" class="btn btn-info col-2">Add</button>
+        </form>
       </div>
     </nar>
 

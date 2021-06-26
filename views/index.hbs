@@ -2,7 +2,11 @@
   <section class="left col-6">
     <div class="container-list row">
       <h3 class="title-list col-2">List</h3>
-      <i class="far fa-trash-alt col-10"></i>
+      <form action="/todos?_method=DELETE" method="POST">
+        <button type="submit" class="trashBtn">
+          <i type="submit" class="far fa-trash-alt col-10"></i>
+        </button>
+      </form>
     </div>
 
     <div id="my-todo">
@@ -24,15 +28,23 @@
     <section>
       <div class="container-finish row">
         <h3 class="title-finish col-2">Finish</h3>
-        <i class="far fa-trash-alt col-10"></i>
+        <form action="/todos?_method=DELETE" method="POST">
+          <button type="submit" class="trashBtn">
+            <i type="submit" class="far fa-trash-alt col-10"></i>
+          </button>
+        </form>
       </div>
       <div id="finish"></div>
     </section>
 
     <section>
       <div class="container-trash row">
-        <h3 class="title-finish col-10">Trash<span style="font-size:13px; color: gray;"> (請先取消勾勾後再恢復)</span></h3>
-        <i class="far fa-trash-alt col-2"></i>
+        <h3 class="title-finish col-9">Trash<span style="font-size:13px; color: gray;"> (請先取消勾勾)</span></h3>
+        <form action="/todos?_method=DELETE" method="POST">
+          <button type="submit" class="trashBtn">
+            <i type="submit" class="far fa-trash-alt col-10"></i>
+          </button>
+        </form>
       </div>
       <div id="trash"></div>
     </section>

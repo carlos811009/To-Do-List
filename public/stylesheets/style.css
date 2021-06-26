@@ -21,6 +21,7 @@
 .nav1 {
 	width: 70%;
 	color: white;
+	justify-content: center;
 }
 
 .myTodoTitle {
@@ -34,7 +35,7 @@
 	width: 200px;
 }
 
-#newTodo {
+#addList {
 	margin-right: 20px;
 }
 
@@ -83,6 +84,11 @@
 
 .card-body {
 	width: 350px;
+}
+
+.trashBtn {
+	border:none;
+	background-color: transparent;
 }
 /* @media screen and (max-width: 400px) {
 .nav1 {
