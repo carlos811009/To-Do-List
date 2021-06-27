@@ -6,6 +6,8 @@ module.exports = (app) => {
   app.post('/todos/add', toDoController.addList)
   app.delete('/todos', toDoController.removeAllList)
   app.post('/todos/:id/trash', toDoController.trashList)
+  app.post('/todos/:id/reback', toDoController.rebackList)
+
 
   app.get('/login', (req, res) => {
     res.render('login')

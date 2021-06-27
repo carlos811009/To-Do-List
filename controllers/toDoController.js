@@ -56,7 +56,19 @@ const toDoController = {
         })
           .then(() => res.redirect('/'))
       })
-  }
+  },
+  rebackList: (req, res) => {
+    List.findByPk(req.params.id)
+      .then(list => {
+        list.update({
+          name: list.name,
+          time: list.time,
+          isTrashed: false,
+          isFinish: list.isFinished
+        })
+          .then(() => res.redirect('/'))
+      })
+  },
 
 }
 
