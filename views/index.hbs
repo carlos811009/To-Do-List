@@ -12,12 +12,13 @@
     <div id="my-todo">
       <!-- 			add items here -->
       {{#each lists}}
+      {{#unless this.isFinished}}
       {{#unless this.isTrashed}}
       <div class="infor_container">
         <label for="todo " class="item col-6" style="display:flex;">
           <form action="/todos/{{this.id}}/finish" method="POST" style="margin-right: 10px;">
             <button type="submit" class="trashBtn">
-              <input class="form-check-input" type="checkbox" value="" onclick="if (this.checked)return this.value">
+              <i class="far fa-square" style="color: gray;"></i>
             </button>
           </form>
           {{this.name}}
@@ -25,11 +26,11 @@
         <div class="createdTime mr-3">{{this.time}}</div>
         <form action="/todos/{{this.id}}/trash" method="POST" class="col-1">
           <button type="submit" class="trashBtn">
-            {{!-- <input type="hidden"> --}}
-            <i class="fas fa-minus-circle circle-delete"><input type="hidden" name="isTrash" value="true"></i>
+            <i class="fas fa-minus-circle circle-delete"></i>
           </button>
         </form>
       </div>
+      {{/unless}}
       {{/unless}}
       {{/each }}
     </div>
@@ -45,7 +46,29 @@
           </button>
         </form>
       </div>
-      <div id="finish"></div>
+      <div id="finish">
+        {{#each lists}}
+        {{#if this.isFinished}}
+        <div class="infor_container">
+          <label for="todo " class="item col-6" style="display:flex;">
+            <form action="/todos/{{this.id}}/finish" method="POST" style="margin-right: 10px;">
+              <button type="submit" class="trashBtn">
+                <i class="fas fa-check"></i>
+              </button>
+            </form>
+            {{this.name}}
+          </label>
+          <div class="createdTime mr-3">{{this.time}}</div>
+          <form action="/todos/{{this.id}}/trash" method="POST" class="col-1">
+            <button type="submit" class="trashBtn">
+              {{!-- <input type="hidden"> --}}
+              <i class="fas fa-minus-circle circle-delete"><input type="hidden" name="isTrash" value="true"></i>
+            </button>
+          </form>
+        </div>
+        {{/if}}
+        {{/each }}
+      </div>
     </section>
 
     <section>

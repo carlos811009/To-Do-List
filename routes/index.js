@@ -7,7 +7,7 @@ module.exports = (app) => {
   app.delete('/todos', toDoController.removeAllList)
   app.post('/todos/:id/trash', toDoController.trashList)
   app.post('/todos/:id/reback', toDoController.rebackList)
-
+  app.post('/todos/:id/finish', toDoController.finishList)
 
   app.get('/login', (req, res) => {
     res.render('login')

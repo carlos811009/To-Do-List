@@ -69,6 +69,18 @@ const toDoController = {
           .then(() => res.redirect('/'))
       })
   },
+  finishList: (req, res) => {
+    List.findByPk(req.params.id)
+      .then(list => {
+        list.update({
+          name: list.name,
+          time: list.time,
+          isTrashed: list.isTrashed,
+          isFinished: true,
+        })
+          .then(() => res.redirect('/'))
+      })
+  },
 
 }
 
