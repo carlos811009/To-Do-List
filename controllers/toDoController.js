@@ -9,25 +9,52 @@ const toDoController = {
     })
       .then(lists => {
         lists = lists.map(list => ({
+          id: list.id,
           name: list.dataValues.name,
-          time: `${list.createdAt.getFullYear()} - ${months[list.createdAt.getMonth()]} / ${list.createdAt.getDate()}日`
+          time: `${list.createdAt.getFullYear()} - ${months[list.createdAt.getMonth()]} / ${list.createdAt.getDate()}日`,
+          isTrashed: list.isTrashed,
+          isFinished: list.isFinished,
         }))
         res.render('index', { lists })
       })
   },
 
   addList: (req, res) => {
-    List.create({
-      name: req.body.newList
+    if (req.body.newList && req.body.newList.trim() !== '') {
+      List.create({
+        name: req.body.newList,
+        isTrashed: false,
+        isFinished: false,
+      })
+        .then((list) => {
+          req.flash('success_messages', '創建成功')
+          return res.redirect('/')
+        }
+        )
+    } else {
+      req.flash('error_messages', '請輸入名稱')
+      return res.redirect('/')
+    }
+  },
+
+  removeAllList: (req, res) => {
+    List.destroy({
+      where: {},
+      truncate: true
     })
       .then(() => res.redirect('/'))
   },
 
-  removeAllList: (req, res) => {
-    List.findAll()
-      .then(lists => {
-        lists.forEach(list => list.destroy());
-        return res.redirect('/')
+  trashList: (req, res) => {
+    List.findByPk(req.params.id)
+      .then(list => {
+        list.update({
+          name: list.name,
+          time: list.time,
+          isTrashed: true,
+          isFinish: list.isFinished
+        })
+          .then(() => res.redirect('/'))
       })
   }
 

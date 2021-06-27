@@ -23,29 +23,6 @@ function addItem(text) {
   list.appendChild(newItem)
 }
 
-// 新增list
-//監聽addBtn 有沒有被點擊
-addBtn.addEventListener('click', function () {
-  const inputValue = input.value
-  const checkInput = inputValue.trim()
-  //如果有就查看input裡面有沒有字  
-  //並避免輸入一串空格符號
-  if ((inputValue.length !== 0) && (checkInput !== "") || checkInput > 0) {
-    addItem(inputValue)
-  }
-})
-
-//按enter增加item
-input.addEventListener('keypress', function () {
-  const inputValue = input.value
-  const checkInput = inputValue.trim()
-  if (event.keyCode == 13) {
-    if ((inputValue.length !== 0) && (checkInput !== "") || checkInput > 0) {
-      addItem(inputValue)
-    }
-  }
-})
-
 //監聽整個list有沒有被點擊
 list.addEventListener('click', function (event) {
   const target = event.target

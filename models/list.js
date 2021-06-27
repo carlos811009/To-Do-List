@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   List.init({
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    isFinished: DataTypes.BOOLEAN,
+    isTrashed: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'List',

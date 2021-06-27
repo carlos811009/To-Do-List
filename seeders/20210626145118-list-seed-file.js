@@ -7,7 +7,9 @@ module.exports = {
       Array.from({ length: 10 }).map(each => ({
         name: 'test',
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        isTrashed: true,
+        isFinished: false,
       })), {});
   },
 

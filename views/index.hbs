@@ -1,8 +1,8 @@
-<div class="list-info row">
-  <section class="left col-6">
+<div class="list-info row mx-auto" style="width:70%; text-align:center;">
+  <section class="left col-5">
     <div class="container-list row">
-      <h3 class="title-list col-2">List</h3>
-      <form action="/todos?_method=DELETE" method="POST">
+      <h3 class="title-list col-9">List</h3>
+      <form action="/todos?_method=DELETE" method="POST" class="col-3">
         <button type="submit" class="trashBtn">
           <i type="submit" class="far fa-trash-alt col-10"></i>
         </button>
@@ -12,14 +12,25 @@
     <div id="my-todo">
       <!-- 			add items here -->
       {{#each lists}}
+      {{#unless this.isTrashed}}
       <div class="infor_container">
-        <label for="todo list-group-item" class="item col-7">
-          <input class="form-check-input me-1" type="checkbox" value="">
+        <label for="todo " class="item col-6" style="display:flex;">
+          <form action="/todos/{{this.id}}/finish" method="POST" style="margin-right: 10px;">
+            <button type="submit" class="trashBtn">
+              <input class="form-check-input" type="checkbox" value="" onclick="if (this.checked)return this.value">
+            </button>
+          </form>
           {{this.name}}
         </label>
-        <div class="createdTime mr-2">{{this.time}}</div>
-        <i class="fas fa-minus-circle circle-delete"></i>
+        <div class="createdTime mr-3">{{this.time}}</div>
+        <form action="/todos/{{this.id}}/trash" method="POST" class="col-1">
+          <button type="submit" class="trashBtn">
+            {{!-- <input type="hidden"> --}}
+            <i class="fas fa-minus-circle circle-delete"><input type="hidden" name="isTrash" value="true"></i>
+          </button>
+        </form>
       </div>
+      {{/unless}}
       {{/each }}
     </div>
 
@@ -28,7 +39,7 @@
     <section>
       <div class="container-finish row">
         <h3 class="title-finish col-2">Finish</h3>
-        <form action="/todos?_method=DELETE" method="POST">
+        <form action="/todos?_method=DELETE" method="POST" class="col-3">
           <button type="submit" class="trashBtn">
             <i type="submit" class="far fa-trash-alt col-10"></i>
           </button>
@@ -39,14 +50,38 @@
 
     <section>
       <div class="container-trash row">
-        <h3 class="title-finish col-9">Trash<span style="font-size:13px; color: gray;"> (請先取消勾勾)</span></h3>
-        <form action="/todos?_method=DELETE" method="POST">
+        <h3 class="title-finish col-9">Trash<span style="font-size:13px; color: gray;"> (想恢復請先取消勾勾)</span></h3>
+        <form action="/todos?_method=DELETE" method="POST" class="col-3">
           <button type="submit" class="trashBtn">
             <i type="submit" class="far fa-trash-alt col-10"></i>
           </button>
         </form>
       </div>
-      <div id="trash"></div>
+      <div id="trash">
+        {{#each lists}}
+        {{#if this.isTrashed}}
+        <div class="infor_container">
+          <label for="todo " class="item col-6" style="display:flex;">
+            <form action="/todos/{{this.id}}/finish" method="POST" style="margin-right: 10px;">
+              <button type="submit" class="trashBtn">
+                <input class="form-check-input" type="checkbox" value="" onclick="if (this.checked)return this.value">
+              </button>
+            </form>
+            {{this.name}}
+          </label>
+          <div class="createdTime mr-3">{{this.time}}</div>
+          <form action="/todos/{{this.id}}" method="POST" class="col-1">
+            <button type="submit" class="trashBtn">
+              {{!-- <input type="hidden"> --}}
+              <i class="fas fas fa-undo return">
+                <input type="hidden" name="isTrash" id="isTrash" value="false">
+              </i>
+            </button>
+          </form>
+        </div>
+        {{/if}}
+        {{/each }}
+      </div>
     </section>
   </section>
 </div>

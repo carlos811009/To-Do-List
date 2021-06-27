@@ -18,21 +18,26 @@
 	box-shadow: 0 4px 5px 0 rgba(51, 102, 102, 0.5);
 }
 
+#newList {
+	border-radius: 8px ;
+	border: none;
+}
+
 .nav1 {
 	width: 70%;
 	color: white;
 	justify-content: center;
 }
 
-.myTodoTitle {
-	text-align: center;
-	font-size: 20px;
+.myTodoTitle{
+	color:white;
 }
 
 .content {
 	font-size: 10px;
 	color: gray;
 	width: 200px;
+
 }
 
 #addList {
@@ -41,7 +46,8 @@
 
 .list-info {
 	width: 70%;
-	text-align: center;
+	display: flex;
+  justify-content: center;
 	margin:20px auto;
 }
 
