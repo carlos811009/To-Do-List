@@ -6,7 +6,8 @@ const flash = require('connect-flash')
 const passport = require('./config/passport')
 const app = express()
 const db = require('./models/index')
-const PORT = 3000
+
+const PORT = process.env.PORT || 3000
 
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs' }))
