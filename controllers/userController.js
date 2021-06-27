@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs')
 const db = require('../models')
 const User = db.User
 
+
 const userController = {
   registerPage: (req, res) => {
     res.render('register')
@@ -33,8 +34,8 @@ const userController = {
             password: bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
           })
             .then(() => {
-              req.flash('success_messages', "感謝註冊,歡迎使用MyTODO")
-              res.redirect('/')
+              req.flash('success_messages', "感謝註冊 , 歡迎使用MyTODO , 請先登入")
+              res.redirect('/login')
             })
         }
       })
