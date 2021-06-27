@@ -6,7 +6,6 @@ const userController = {
   registerPage: (req, res) => {
     res.render('register')
   },
-
   loginPage: (req, res) => {
     res.render('login')
   },
@@ -40,6 +39,15 @@ const userController = {
         }
       })
 
+  },
+  login: (req, res) => {
+    req.flash('success_messages', '成功登入！')
+    res.redirect('/')
+  },
+  logout: (req, res) => {
+    req.flash('success_messages', '登出成功！')
+    req.logout()
+    res.redirect('/login')
   }
 }
 

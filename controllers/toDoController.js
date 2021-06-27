@@ -44,7 +44,10 @@ const toDoController = {
         isTrashed: false
       }
     })
-      .then(() => res.redirect('/'))
+      .then(() => {
+        req.flash('error_messages', "已刪除List欄位")
+        return res.redirect('/')
+      })
   },
 
   deleteFinish: (req, res) => {
@@ -54,7 +57,10 @@ const toDoController = {
         isTrashed: false
       }
     })
-      .then(() => res.redirect('/'))
+      .then(() => {
+        req.flash('error_messages', "已刪除Finish欄位")
+        return res.redirect('/')
+      })
   },
 
   deleteTrash: (req, res) => {
@@ -63,7 +69,10 @@ const toDoController = {
         isTrashed: true
       }
     })
-      .then(() => res.redirect('/'))
+      .then(() => {
+        req.flash('error_messages', "已刪除Trash欄位")
+        return res.redirect('/')
+      })
   },
 
   trashList: (req, res) => {
