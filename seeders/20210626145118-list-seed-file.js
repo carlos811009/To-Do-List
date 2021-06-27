@@ -8,7 +8,7 @@ module.exports = {
         name: 'test',
         createdAt: new Date(),
         updatedAt: new Date(),
-        isTrashed: true,
+        isTrashed: false,
         isFinished: false,
       })), {});
   },

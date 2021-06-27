@@ -37,10 +37,31 @@ const toDoController = {
     }
   },
 
-  removeAllList: (req, res) => {
+  deleteList: (req, res) => {
     List.destroy({
-      where: {},
-      truncate: true
+      where: {
+        isFinished: false,
+        isTrashed: false
+      }
+    })
+      .then(() => res.redirect('/'))
+  },
+
+  deleteFinish: (req, res) => {
+    List.destroy({
+      where: {
+        isFinished: true,
+        isTrashed: false
+      }
+    })
+      .then(() => res.redirect('/'))
+  },
+
+  deleteTrash: (req, res) => {
+    List.destroy({
+      where: {
+        isTrashed: true
+      }
     })
       .then(() => res.redirect('/'))
   },
@@ -77,6 +98,18 @@ const toDoController = {
           time: list.time,
           isTrashed: list.isTrashed,
           isFinished: true,
+        })
+          .then(() => res.redirect('/'))
+      })
+  },
+  cancelCheck: (req, res) => {
+    List.findByPk(req.params.id)
+      .then(list => {
+        list.update({
+          name: list.name,
+          time: list.time,
+          isTrashed: list.isTrashed,
+          isFinished: false,
         })
           .then(() => res.redirect('/'))
       })
