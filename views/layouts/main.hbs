@@ -14,31 +14,49 @@
 
 <body>
   <div class="row" id="body">
+    {{#if user}}
     <nar class="mb-3 col-12">
-      <div class="nav1 row">
-        <div class="col-2  ">
-          <a class="navbar-brand myTodoTitle" href="/">My Todo</a>
+      <div class="nav1 col-10 row">
+        <div class="col-2">
+          <a class="navbar-brand myTodoTitle" href="/" style="display: block;
+    text-align: end;">My Todo</a>
         </div>
-        <form action="/todos/add" method="post" class="col-6 row">
+        <form action=" /todos/add" method="post" class="col-10 row">
           <input type="text" placeholder="to do something..." name="newList" id="newList" class="col-9">
-          <button id="submit" class="btn btn-info col-2" style="margin: 0 20px;">Add</button>
+          <button id="submit" class="btn btn-info col-2"
+            style="margin: 0 20px;background-color:rgb(56, 182, 182);border:none;">Add</button>
         </form>
       </div>
+      <form action="/logout" method="get" class="">
+        <button id="submit" class="btn btn-secondary"
+          style="margin: 0 20px; background-color:rgb(56, 182, 182);border:none;">Logout</button>
+      </form>
     </nar>
+    {{else}}
+    <nar class="mb-3 col-12">
+      <h3 style="display: block; text-align: end; color:white;">My Todo</h3>
+    </nar>
+    {{/if}}
 
     {{#if success_messages}}
-
     <div class="alert alert-success alert-dismissible fade show col-7 mx-auto" role="alert">
-      {{success_messages}}
+      {{{success_messages}}}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {{/if}}
+
     {{#if error_messages}}
     <div class="alert alert-danger alert-dismissible fade show col-7 mx-auto" role="alert">
       {{error_messages}}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {{/if}}
+    {{!-- {{#if welcome_messages}}
+    <div class="alert alert-success alert-dismissible fade show col-7 mx-auto" role="alert">
+      {{welcome_messages}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{/if}} --}}
     {{{body}}}
 
 

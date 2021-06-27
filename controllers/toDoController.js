@@ -5,17 +5,21 @@ const months = "1月,2月,3月,4月,5月,6月,7月,8月,9月,10月,11月,12月".
 const toDoController = {
   getList: (req, res) => {
     List.findAll({
+      where: { UserId: req.user.id },
       order: [['createdAt', 'DESC']]
     })
       .then(lists => {
-        lists = lists.map(list => ({
-          id: list.id,
-          name: list.dataValues.name,
-          time: `${list.createdAt.getFullYear()} - ${months[list.createdAt.getMonth()]} / ${list.createdAt.getDate()}日`,
-          isTrashed: list.isTrashed,
-          isFinished: list.isFinished,
-        }))
-        res.render('index', { lists })
+        if (lists) {
+          lists = lists.map(list => ({
+            id: list.id,
+            name: list.dataValues.name,
+            time: `${list.createdAt.getFullYear()} - ${months[list.createdAt.getMonth()]} / ${list.createdAt.getDate()}日`,
+            isTrashed: list.isTrashed,
+            isFinished: list.isFinished,
+          }))
+          return res.render('index', { lists })
+        }
+        return res.render('index')
       })
   },
 
@@ -25,6 +29,7 @@ const toDoController = {
         name: req.body.newList,
         isTrashed: false,
         isFinished: false,
+        UserId: req.user.id
       })
         .then((list) => {
           req.flash('success_messages', '創建成功')

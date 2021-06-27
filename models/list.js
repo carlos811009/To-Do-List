@@ -10,13 +10,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      List.belongsTo(models.User)
     }
   };
   List.init({
     name: DataTypes.STRING,
     isFinished: DataTypes.BOOLEAN,
     isTrashed: DataTypes.BOOLEAN,
+    UserId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'List',

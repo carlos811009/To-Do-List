@@ -10,6 +10,7 @@ module.exports = {
         updatedAt: new Date(),
         isTrashed: false,
         isFinished: false,
+        UserId: 7,
       })), {});
   },
 
